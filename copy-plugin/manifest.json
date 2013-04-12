@@ -10,13 +10,11 @@
   "permissions":
     [
     "tabs",
-    "http://*/*",
-    "https://*/*",
-    "notifications"], 
+    "<all_urls>"], 
   "content_scripts":[
     {
       "matches":["<all_urls>"],
-      "js":["oncopy.js"]
+      "js":["content.js"]
     }
   ]
 }

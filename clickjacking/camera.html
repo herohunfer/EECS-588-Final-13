@@ -6,7 +6,6 @@
         max-width: 100%;
         max-height: 100%;
         margin: 0px;
-        cursor: none;
         background-image: url('./white.png');
         background-repeat: repeat;
       }
@@ -44,39 +43,9 @@
     <img id="bar_r" src="./bar_r.png" />
     <video id="live_video" autoplay controls></video>
     <a href="camera_good.html"> Camera Good</a>
-    <img id="cursor" src="./cursor1.png" />
+    <!--img id="cursor" src="./cursor1.png" /-->
 
     <script type="text/javascript">
-      video = document.getElementById("live_video");
-
-      navigator.getMedia = ( navigator.getUserMedia ||
-          navigator.webkitGetUserMedia ||
-          navigator.mozGetUserMedia ||
-          navigator.msGetUserMedia);
-
-
-      console.log("moz");
-      navigator.getMedia(
-          {video:true, audio:true},
-          function(stream) {
-          video.src = window.URL.createObjectURL(stream);
-          video.onloademetadata = function(e) {
-          alert("cool");
-          };
-        }
-      );
-
-      document.onmousemove = mouse_move;
-
-      cursor = document.getElementById('cursor');
-      cursor.style.position = "absolute"; 
-
-      function mouse_move(e) {
-        e = e || window.event;
-        cursor.style.left = (e.clientX) * 2/3 + 'px';
-        cursor.style.top = (e.clientY) * 2/3 + 'px';
-      }
-    
     </script>
   </body>
 </html>

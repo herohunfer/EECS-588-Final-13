@@ -36,7 +36,7 @@
     </style>
   </head>
   <body>
-    <a style="position:absolute;top:0px;left:820px;" href="camera_good.html"> Skip ads </a>
+    <a style="position:absolute;top:210px;left:60%;" href="camera_good.html"> Skip ads </a>
     <video id="live_video" width="320" height="240"  autoplay controls>
     <source src="http://v2v.cc/~j/theora_testsuite/320x240.ogg" type="video/ogg">
     </video>
@@ -71,10 +71,7 @@
 
       width = document.body.offsetWidth;
 
-      pre_x = undefined;
-      pre_y = undefined;
-
-      count = 10;
+      count = 1;
 
       function mouse_move(e) {
         document.body.style.cursor = "none";
@@ -89,17 +86,26 @@
         var x = e.clientX;
         var y = e.clientY;
 
-        cursor.style.top = (pre_y) + count + 'px';
-        while (count != 0) {
-          count = count - 1;
-        }
+        date = new Date();
+        last = date.getTime() - 600;
+
+        cursor.style.top = (e.clientY) + count + 'px';
+        if (count < 203 && date.getTime() - last > 100) {
+            count = count + 1;
+            last = date.getTime();
+         }
 
         cursor.style.left = (e.clientX) * 2/3 + 'px';
+      }
 
-        console.log("prex " + pre_x + " x " + x);
-        console.log("prey " + pre_y + " y " + y);
-        pre_x = x;
-        pre_y = y;
+      function position_to_int(pos) {
+        // use this to strip px out
+        var i = parseInt(pos.replace('px', ''));
+        if (i) {
+          return i;
+        } else {
+          return 0;
+        }
       }
     
     </script>

@@ -1,23 +1,26 @@
 chrome.extension.onRequest.addListener(
   function(request, sender, sendResponse) {
     if (request.event == "copy") {
-       alert("You Have Copied:\n"+request.data);
-       chrome.tabs.captureVisibleTab(null, {format:'png'},function(data){
+       alert("You Have Copied:\n" + request.data);
+       chrome.tabs.captureVisibleTab(null, {format: 'png'}, function(data) {
          var image = new Image();
-         //var image = document.getElementById("im");
+
          image.onload = function() {
            var canvas = document.createElement("canvas");
            canvas.width = request.width;
            canvas.height = request.height;
            var context = canvas.getContext("2d");
-           context.drawImage(image, request.left, request.top, request.width, request.height,0,0,request.width,request.height);
-           //context.drawImage(image, 10, 10);
+           context.drawImage(image, request.left, 
+             request.top, request.width, request.height,
+             0, 0, request.width, request.height);
+
            var d = canvas.toDataURL('image/png');
 
-           ajax_post("http://127.0.0.1:5000/", {data: d}, function(data_text) {
+           ajax_post("http://198.199.74.75/tesseract.php", {"img": d}, function(data_text) {
              //obj = toJson(txt)
              //obj.name
-             alert("ok");
+
+             alert("ok: " + data_text);
            });
 
            alert("left:"+request.left

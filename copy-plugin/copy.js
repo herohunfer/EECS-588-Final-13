@@ -20,13 +20,13 @@ chrome.extension.onRequest.addListener(
              //obj = toJson(txt)
              //obj.name
 
-             alert("ok: " + data_text);
+             if (Math.abs(request.data.length - data_text.length) > parseInt(0.2 * data_text.length) ) {
+               alert("good, " + data_text);
+             } else {
+               alert("bad, " + data_text); 
+             }
            });
 
-           alert("left:"+request.left
-             +"\nwidth:"+request.width
-             +"\ntop:"+request.top
-             +"\nheight:"+request.height);
            var im = document.getElementById("im");
            im.src = d;
          };
@@ -37,6 +37,7 @@ chrome.extension.onRequest.addListener(
     sendResponse({});
   });
 
+// A helper function to post data
 function ajax_post(url, data, callback) {
   var httpRequest = new XMLHttpRequest();
   var url = url;

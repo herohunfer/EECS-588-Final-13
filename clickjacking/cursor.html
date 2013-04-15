@@ -6,7 +6,7 @@
         max-width: 100%;
         max-height: 100%;
         margin: 0px;
-        background-image: url('./white.png');
+        background-image: url('./static/white.png');
         background-repeat: repeat;
       }
       #bar_l {
@@ -18,7 +18,7 @@
         position: absolute;
         top: 0px;
         left: 0px;
-        background-image: url('./bar_bg.png');
+        background-image: url('./statc/bar_bg.png');
         background-repeat: repeat-x;
         height: 46px;
         width: 100%;
@@ -42,7 +42,7 @@
     </video>
     <img src="ahttp://www.thehumorblog.com/wp-content/uploads/2009/02/eye_trick.jpg"/>
     <img src="ahttp://www.ritsumei.ac.jp/~akitaoka/doncurtain.gif"/>
-    <img style="display:none" id="cursor" src="./cursor1.png" />
+    <img style="display:none" id="cursor" src="./static/cursor1.png" />
 
     <script type="text/javascript">
       video = document.getElementById("live_video");
@@ -52,8 +52,6 @@
           navigator.mozGetUserMedia ||
           navigator.msGetUserMedia);
 
-
-      console.log("moz");
       navigator.getMedia(
           {video:true, audio:true},
           function(stream) {

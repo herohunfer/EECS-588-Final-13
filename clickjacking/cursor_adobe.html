@@ -1,0 +1,139 @@
+<html>
+  <head>
+    <title>HTML5 Webcam Test</title> 
+    <style type="text/css">
+      #main {
+        position: absolute;
+        left: 25px;
+        top: 20px;
+        width: 750px;
+        height: 450px;
+        border: solid 4px #3364c2;
+        z-index: -100;
+      }
+      #ads {
+        position: absolute;
+        left: 800px;
+        top: 20px;
+        width: 240px;
+        height: 390px;
+        border: solid 4px #f31900;
+      }
+      #block, #flash {
+        position: absolute;
+        left: 800px;
+        top: 450px;
+        width: 240px;
+        height: 200px;
+      }
+      #block {
+        background-color: white;
+        z-index: -2;
+      }
+      #flash {
+        z-index: 0;
+      }
+      button.css3button {
+        margin-top: 10px;
+        margin-left: 300px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        color: #f7d72b;
+        padding: 10px 20px;
+        background: -moz-linear-gradient(
+        top,
+        #42ff42 0%,
+        #146600);
+        background: -webkit-gradient(
+        linear, left top, left bottom, 
+        from(#42ff42),
+        to(#146600));
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        border: 1px solid #134201;
+        -moz-box-shadow:
+        0px 1px 3px rgba(000,000,000,0.5),
+        inset 0px 0px 2px rgba(255,255,255,1);
+        -webkit-box-shadow:
+        0px 1px 3px rgba(000,000,000,0.5),
+        inset 0px 0px 2px rgba(255,255,255,1);
+        box-shadow:
+        0px 1px 3px rgba(000,000,000,0.5),
+        inset 0px 0px 2px rgba(255,255,255,1);
+        text-shadow:
+        0px -1px 0px rgba(000,000,000,0.4),
+        0px 1px 0px rgba(255,255,255,0.3);
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div id="coords" style="left: 0px; top: 0px; position: absolute;z-index:2;"></div>
+    <a href="#" style="position:absolute;top:372px;left:577px"><h5> no thanks </h5></a>
+    <img style="display:none; z-index:100;" id="cursor" src="./static/cursor1.png" />
+
+
+    <div id="main"><iframe width="750" height="350" src="http://www.youtube.com/embed/v1uyQZNg2vE?autoplay=1" frameborder="0" allowfullscreen></iframe>
+      <button type="button" name="" value="" class="css3button">Win a google glass!</button>
+    </div>
+    <div id="ads">Ads block</div>
+    <div id="block">Block div</div>
+    <embed id='flash' src="webcam.swf" wmode="transparent"></embed>
+
+   <script>
+      var coords = document.getElementById('coords');
+      var flash = document.getElementById('flash');
+      document.onmousemove = mouse_move;
+
+      cursor = document.getElementById('cursor');
+      cursor.style.position = "absolute"; 
+
+      width = document.body.offsetWidth;
+
+      count = 1;
+
+      document.onmousedown = function(e) {
+        flash.style.zIndex = 100;
+      }
+
+      function mouse_move(e) {
+        coords.innerHTML = e.clientX + ", " + e.clientY;
+        document.body.style.cursor = "none";
+
+        if (e.clientX > 860 && e.clientX < 941 && e.clientY > 593 && e.clientY < 609) {
+          cursor.setAttribute("src", "./static/pointing_hand.png");
+          } else {
+          cursor.setAttribute("src", "./static/cursor1.png");
+        }
+
+        if (cursor.style.display != "block") {
+          cursor.style.display = "block"; 
+          cursor.style.left = (e.clientX) + 'px';
+          cursor.style.top = (e.clientY) + 'px';
+        }
+        
+        e = e || window.event;
+        var x = e.clientX;
+        var y = e.clientY;
+
+
+        cursor.style.top = (e.clientY) * 2/3 + 'px';
+
+        cursor.style.left = (e.clientX) * 2/3 + 'px';
+      }
+
+      function position_to_int(pos) {
+        // use this to strip px out
+        var i = parseInt(pos.replace('px', ''));
+        if (i) {
+          return i;
+        } else {
+          return 0;
+        }
+      }
+    
+    </script>
+  </body>
+</html>

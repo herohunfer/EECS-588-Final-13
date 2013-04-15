@@ -1,0 +1,56 @@
+
+<!-- Ain't pretty, but it works (FF 3.0.2 only for now) -->
+
+<style>
+  .demoImage { background-image: url('./static/demo.png'); position: absolute; 
+    z-index:1; }
+</style>
+
+<div style="position:absolute; z-index: 50">
+  <h2> This actually still, kinda, works </h2>
+  <h2> Double click demo. The window is freezed for a second, a slow second click would work. </h2>
+</div>
+
+<div class="demoImage" id="demo1" style="left: 0px; top: 0px; height: 371px; width: 411px;background-position: bottom right;z-index:1"></div>
+
+<embed id='flash' src="webcam.swf" 
+style="position:absolute;left:450px;top:350px;width:240px;height:200px;z-index:0;" wmode="transparent"></embed>
+
+<div id="coords" style="left: 300px; top: 300px; position: absolute;z-index:2;"></div>
+
+<script>
+  var imgwidth=411;
+  var imgheight=371;
+
+  var demo = document.getElementById('demo');
+  var flash = document.getElementById('flash');
+  var demo1 = document.getElementById('demo1');
+  var coords = document.getElementById('coords');
+
+  document.onmousedown = function(e) {
+    flash.style.zIndex = 100;
+  }
+
+  document.addEventListener('mousemove', function(e) {
+    coords.innerHTML = e.clientX + ", " + e.clientY;
+
+    if (e.clientX > 185 && e.clientX < 234) {
+      if (e.clientY > 175 && e.clientY < 192) {
+        flash.style.top = e.clientY - 150;
+        flash.style.left = e.clientX - 75;
+        return;
+      }
+    }
+
+    demo1.style.width = imgwidth;
+    demo1.style.height = imgheight;
+    flash.style.top = 350;
+    flash.style.left = 450;
+  }, false);
+
+</script>
+
+<div style="position: absolute; bottom: 0px;">
+
+</div>
+

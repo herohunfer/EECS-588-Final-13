@@ -19,12 +19,21 @@ chrome.extension.onRequest.addListener(
            ajax_post("http://198.199.74.75/tesseract.php", {"img": d}, function(data_text) {
              //obj = toJson(txt)
              //obj.name
-
+             /*
              if (Math.abs(request.data.length - data_text.length) > parseInt(0.2 * data_text.length) ) {
                alert("good, " + data_text);
              } else {
                alert("bad, " + data_text); 
              }
+             */
+             l = Math.min(data_text.length, request.parent.length);
+             count = 0;
+             for (i = 0; i < l; i++) {
+              if (data_text[i] == request.parent[i]) count++; 
+             }
+             if (count*1.0/l > 0.8) alert("good");
+             //if (data_text === request.parent) alert("good");
+             else alert("Danger! Check what you copied! \ndata:"+data_text+"\nparent:"+request.parent);
            });
 
            var im = document.getElementById("im");

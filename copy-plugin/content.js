@@ -11,6 +11,7 @@ function onCopy(e) {
     var windowHeight = window.innerHeight;
     chrome.extension.sendRequest({event: "copy",
                                   data:sel.toString(),
+                                  parent:parentNode.innerText,
                                   left:pLeft,
                                   width:pWidth,
                                   top:pTop,

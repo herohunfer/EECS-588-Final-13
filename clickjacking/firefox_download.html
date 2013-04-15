@@ -1,3 +1,181 @@
+<!DOCTYPE html>
 <html>
-  <iframe width="100%" height="100%" src="http://jsfiddle.net/dashuiwa/dQ722/232/embedded/result" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title> - jsFiddle demo by dashuiwa</title>
+  
+  <script type='text/javascript' src='http://code.jquery.com/jquery-1.7.js'></script>
+  <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+  
+  
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+  <style type='text/css'>
+    body {
+    background-size: cover; 
+    padding: 40px;
+}
+
+/* OS X Window
+======================================== */
+.window {
+    background: -webkit-linear-gradient(rgba(233, 233, 233, 1.0), rgba(178, 178, 178, 1.0) 21px, #6A6A6A 1px, #EDEDED, #EDEDED 23px);
+    height: 340px;
+    width: 465px;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.6), 0 22px 70px 4px rgba(0,0,0,0.56), 0 0 0 1px rgba(0, 0, 0, 0.3);
+    padding: 3px 5px;
+    text-align: left;
+    position:absolute;
+}
+.container {
+padding:15px
+}
+h1 {
+    font: normal normal 13px/20px "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+    text-align: center;
+    position:relative;
+    z-index:2;
+    top:-33px;
+    text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+    color:#444;
+}
+h2 {
+    font: normal bold 13px/20px "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+    margin-bottom:3px;
+}
+p {
+    font: normal normal 11px/14px "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+    padding-top: 3px;
+}
+h2, p { 
+    margin-left: 86px; 
+}
+p a,
+p a:link, 
+p a:visited, 
+p a:hover,
+p a:active {
+    border-bottom: 1px dotted #888; 
+    text-decoration: none; 
+    color: #000;
+}
+nav{
+height:19px;
+}
+nav a {
+    display: inline-block;
+    margin: 2px 2px 3px 2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 100%;
+    background: #f36;
+    box-shadow: 0px 1px 0px rgba(255,255,255,.5);
+    text-indent: -9999px;
+    position: relative;
+}
+
+nav a:before {
+    content: '';
+    display: block;
+    position: absolute;
+    border-radius: 100%;
+    box-shadow:inset 0 1px 4px rgba(0, 0, 0, .8);
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+}
+
+nav a:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 2px;
+    left: 1px;
+    bottom: 1px;
+    right: 1px;
+    border-radius: 100%;
+    background: -webkit-linear-gradient(white, rgba(255, 255, 255, .9) 2%, white, rgba(255, 255, 255, .4) 16%, rgba(255, 255, 255, 0) 43%, rgba(255, 255, 255, .74), rgba(255, 255, 255, .7) 122%, rgba(255, 255, 255, .7));
+    box-shadow: inset 0px -3px -5px 3px rgba(255, 255, 255, 0.2), inset 0px 2px -5px 3px rgba(255, 255, 255, 0.2);
+}
+
+nav a.close {
+    background: #FD4E4E;
+}
+
+nav a.minimize {
+    background: #F3BB55;
+}
+
+nav a.maximize {
+    background: #96D16F;
+}
+
+/* Button
+======================================== */
+.button {
+    font: normal normal 13px/20px "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+    height: 21px;
+    width:79px;
+    background:-webkit-linear-gradient(white 2px,#FCFCFC, #F3F3F3 11px, #ECECEC 4px, #FCFCFC 54px);
+    display:block;
+    float:right;
+    margin-top:5px;
+    cursor: pointer;
+    text-align: center;
+    border-radius:4px;
+    box-shadow:inset 0px 0px 0px 1px #909090, 0px 1px 0px 0px #DFDFDF;
+    color:#000;
+    text-decoration:none;
+}
+
+/* OS X Lion Profile
+======================================== */
+
+.profile{
+    left: -10px;
+    top: 0px;
+    margin:0px;
+    padding: 0px;
+}
+
+
+  </style>
+  
+
+
+<script type='text/javascript'>//<![CDATA[ 
+$(window).load(function(){
+$(function() {
+    $('.drag').draggable(); 
+});
+});//]]>  
+
+</script>
+
+
+</head>
+<body>
+  <div class="window drag">
+<nav>
+<a href="#" class="close"></a>
+<a href="#" class="minimize"></a>
+<a href="#" class="maximize"></a>
+<h1>Download</h1>
+</nav>
+<div class="container">
+<div class="profile">
+<img src="https://dl.dropboxusercontent.com/u/4489964/profile_for_css.png">
+</div>
+</div>
+</div>
+  
+</body>
+
+
 </html>

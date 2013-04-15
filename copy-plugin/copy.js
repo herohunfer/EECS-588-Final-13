@@ -26,6 +26,8 @@ chrome.extension.onRequest.addListener(
                alert("bad, " + data_text); 
              }
              */
+             data_text = data_text.trim();
+             request.parent = request.parent.trim();
              l = Math.min(data_text.length, request.parent.length);
              count = 0;
              for (i = 0; i < l; i++) {

@@ -31,9 +31,52 @@
 
       #live_video{
         top: 0px;
-        height: 50%;
-        width: 50%;
+        height: 95%;
+        width: 70%;
         left: 0px;
+      }
+      #flash {
+        position: absolute;
+        top: 290px;
+        width: 217px;
+        height: 138px;
+      }
+      #block {
+        position: absolute;
+        top:80px;
+        border: solid 2px gray;
+
+        width: 215px;
+        height: 200px;
+        background-color: #eeeeee;
+      }
+      #block2 {
+        position: absolute;
+        top:435px;
+        border: solid 2px gray;
+
+        width: 215px;
+        height: 200px;
+        background-color: #eeeeee;
+      }
+      .inner_block {
+        margin-left: 5px;
+        margin-right: 5px;
+        margin-top: 2px;
+        margin-bottom: 2px;
+
+        width: 199px;
+        background-color: white;
+        border: solid 1px #cccccc;
+        border-radius: 3px; 
+        -moz-border-radius: 3px; 
+        -webkit-border-radius: 3px; 
+        padding:4px 2px 4px 2px;
+      }
+      p {
+        font-size: 12px;
+        margin-top: 2px;
+        margin-bottom: 2px;
       }
     </style>
   </head>
@@ -41,11 +84,95 @@
     <div id="bar_bg"></div>
     <img id="bar_l" src="./static/bar_l.png" />
     <img id="bar_r" src="./static/bar_r.png" />
+    <div id="coords" style="left: 0px; top: 35px; position: absolute;z-index:2;"></div>
+    <img style="display:none; z-index:100;" id="cursor" src="./static/cursor1.png" />
     <video id="live_video" autoplay controls></video>
-    <a href="camera_good.html"> Camera Good</a>
+    <embed id='flash' src="webcam.swf" wmode="transparent"></embed>
+    <div id='block' >
+      <p style="margin:2px;"> Speedup your download </p>
+      <div class="inner_block">
+        <p>Download xoseep today</p>
+      </div>
+      <div class="inner_block">
+        <p> This is a demo</p>
+      </div>
+    </div>
+    <div id='block2' >
+      <p style="margin: 2px;"> Looking for VPS ? Try 4ud.com</p>
+      <div class="inner_block">
+        <p> This website wants to use your camera</p>
+      </div>
+    </div>
     <!--img id="cursor" src="./cursor1.png" /-->
 
     <script type="text/javascript">
+      var flash = document.getElementById("flash");
+      var block = document.getElementById("block");
+      var block2 = document.getElementById("block2");
+
+      flash.style.left = window.innerWidth - 215 + "px";
+      block.style.left = window.innerWidth - 215 + "px";
+      block2.style.left = window.innerWidth - 215 + "px";
+
+      var coords = document.getElementById('coords');
+      var flash = document.getElementById('flash');
+      document.onmousemove = mouse_move;
+
+      cursor = document.getElementById('cursor');
+      cursor.style.position = "absolute";
+
+      width = document.body.offsetWidth;
+
+      count = 1;
+
+      document.onmousedown = function(e) {
+        flash.style.zIndex = 100;
+      }
+      function mouse_move(e) {
+        coords.innerHTML = e.clientX + ", " + e.clientY;
+        document.body.style.cursor = "none";
+      
+        if (e.clientX > 988 && e.clientX < 1023 && e.clientY > 610 && e.clientY < 629) {
+          cursor.setAttribute("src", "./static/pointing_hand.png");
+        } else {
+          cursor.setAttribute("src", "./static/cursor1.png");
+        }
+      
+        if (cursor.style.display != "block") {
+          cursor.style.display = "block";
+          cursor.style.left = (e.clientX) + 'px';
+          cursor.style.top = (e.clientY) + 'px';
+
+          pre_x = e.clientX;
+          pre_y = e.clientY;
+        }
+      
+        e = e || window.event;
+        var x = e.clientX;
+        var y = e.clientY;
+      
+        var d_false =  17-y;
+        var d_true = 421-y;
+
+
+        cursor.style.top = ( y - 421 * x/window.innerWidth ) * 2/3 + 'px';
+      
+        cursor.style.left = x + 'px';
+
+        pre_x = x;
+        pre_y = y;
+      }
+
+      
+      function position_to_int(pos) {
+        // use this to strip px out
+        var i = parseInt(pos.replace('px', ''));
+        if (i) {
+          return i;
+        } else {
+          return 0;
+        }
+      }
     </script>
   </body>
 </html>
